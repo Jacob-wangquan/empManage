@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>管理员登录</h1>
+<h1>登录</h1>
 <form action="loginProcess.php" method="post">
     <table>
         <tr><td>用户名<td></td><td><input type="text" name="id"></td></tr>
