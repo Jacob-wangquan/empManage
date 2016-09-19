@@ -43,6 +43,27 @@ class SqlHelper{
 
     }
 
+    //考虑分页情况的查询
+    public function execute_dql_fenye($sql1,$sql2,&$fenyePage){
+        //取要分页显示的数据
+        $res = mysqli_query($this->conn,$sql1 ) or die(mysqli_error($this->conn));
+        $arr = array();
+        while ($row=mysqli_fetch_assoc($res)){
+            $arr[] = $row;
+        }
+        mysqli_free_result($res);
+
+        $res2 = mysqli_query($this->conn, $sql2) or die(mysqli_error($this->conn));
+        if($row=mysqli_fetch_row($res2)){
+            $fenyePage->$pageCount = ceil($row[0]/$fenyePage->pageSize);
+            $fenyePage->rowCount=$row[0];
+        }
+
+        $fenyePage->$res_array= $arr;
+
+
+    }
+
     //执行dml
     public function execute_dml($sql){
         $b = mysqli_query( $this->conn,$sql);

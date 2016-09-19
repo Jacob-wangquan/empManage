@@ -41,13 +41,23 @@ if($pageNow<$pageCount){
     echo "<a href='empList.php?pageNow=$nextPage'>下一页</a>&nbsp;";
 }
 
-//echo "<a href='#'><<</a>&nbsp;";
-//echo "<a href='#'>[1]</a>&nbsp;";
-//echo "<a href='#'>[2]</a>&nbsp;";
-//echo "<a href='#'>[3]</a>&nbsp;";
-//echo "<a href='#'>>></a>&nbsp;";
+
+//for打印超链接
+$page_whole = 10;
+$start = floor(($pageNow-1)/$page_whole)*$page_whole+1;
+$index = $start;
+if($pageNow>10){
+    echo "<a href='empList.php?pageNow=".($start-1)."'>&nbsp;&nbsp;<<&nbsp;&nbsp;</a>";
+}
+
+for(;$start<$index+$page_whole;$start++){
+    echo "<a href='empList.php?pageNow=$start'>[$start]</a>";
+}
+//10页翻动
+echo "<a href='empList.php?pageNow=$start'>&nbsp;&nbsp;>>&nbsp;&nbsp;</a>";
+
 //显示当前页和共有多少页
-echo "当前页$pageNow/共有{$pageCount}页";
+echo "当前页{$pageNow}/共有{$pageCount}页";
 
 //指定跳转到某一页
 echo "<br>";

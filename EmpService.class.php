@@ -37,6 +37,14 @@ class EmpService
 
         return $res;
     }
+
+
+    //第二种使用封装的方式
+    function getFenyePage($fenyePage){
+        $sqlHelper = new SqlHelper();
+        $sql1 = "select * from emp where limit '.().' ";
+        $sqlHelper->execute_dql_fenye(, , $fenyePage)
+    }
 }
 
 
